@@ -12,14 +12,6 @@ class Question
 public:
     Question();
     ~Question();
-    void set_question_answer(char);
-    void set_question_type(string);
-    void set_question_body(string);
-    void set_question_option_A(string);
-    void set_question_option_B(string);
-    void set_question_option_C(string);
-    void set_question_option_D(string);
-    void set_question_number(int);
 
     char get_question_answer();
     string get_question_type();

@@ -39,7 +39,6 @@ public:
 
 private:
     int number;             //players' id
-    string name;            //player's name
     int right_sum;          //the number of question that player respond rightly
     Time game_start_time;   //the sart time player start the game
     int game_time_cost;     //the time player cost on the game
