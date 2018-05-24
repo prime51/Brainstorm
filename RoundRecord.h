@@ -4,6 +4,7 @@
 #include <iostream>
 #include <string>
 #include <cstring>
+#include "mytime.h"
 
 using namespace std;
 
@@ -14,12 +15,12 @@ private:
     Time end_time;
     int time_cost;
     int question_id;
-    int player_1;
-    int player_2;
-    char response_1;
-    char response_2;
+    int player_id;
+    char response;
+    bool isCorrect;
 
 public:
-    RoundRecord( Time, Time, int, int, int, int, char, char);
+    RoundRecord();
+    RoundRecord(Time start_time, Time end_time, int question_id, int player_id, char response, bool isCorrect);
     ~RoundRecord();
 };
