@@ -14,8 +14,21 @@ TEMPLATE = app
 
 
 SOURCES += main.cpp\
-        server.cpp
+        server.cpp\
+        question.cpp\
+        questionbank.cpp\
+        user.cpp\
+        userbank.cpp
+#        gameresult.cpp
 
-HEADERS  += server.h
+HEADERS  += server.h\
+        question.h\
+        questionbank.h\
+        user.h\
+        userbank.h
+#        gameresult.h
 
 FORMS    += server.ui
+
+RESOURCES += \
+    data.qrc
