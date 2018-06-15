@@ -1,0 +1,10 @@
+Name: Prime
+ID: 0
+Password: 123
+Level: 0
+Exp: 0
+Rank: 
+Coin: 0
+Total_game: 0
+Winning_game: 0
+Winning_rate: 0

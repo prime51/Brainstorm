@@ -1,0 +1,5 @@
+<RCC>
+    <qresource prefix="/database">
+        <file alias="data">database/QuestionBank.csv</file>
+    </qresource>
+</RCC>

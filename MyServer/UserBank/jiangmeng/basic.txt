@@ -1,0 +1,10 @@
+Name: jiangmeng
+ID: 13
+Password: 12345
+Level: 14
+Exp: 16
+Rank: 
+Coin: 7209070
+Total_game: 7209065
+Winning_game: 6226023
+Winning_rate: 9.3461e-307
