@@ -160,13 +160,6 @@ QPushButton{border:0px;background:#F3A026;color:white;border-radius:6px;font-siz
             </layout>
            </item>
            <item>
-            <widget class="Line" name="line">
-             <property name="orientation">
-              <enum>Qt::Vertical</enum>
-             </property>
-            </widget>
-           </item>
-           <item>
             <layout class="QHBoxLayout" name="matchHLayout">
              <property name="leftMargin">
               <number>4</number>

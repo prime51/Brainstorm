@@ -50,7 +50,7 @@ MainPage::MainPage(QWidget *parent) :
     createLoginPage();
     connect(ui->closeBtn, &QPushButton::clicked, this, &MainPage::close);
 
-    QString IP_Addr = getIP_Addr().toString();
+//    QString IP_Addr = getIP_Addr().toString();
     qDebug() << IP_Addr;
     socket = new QTcpSocket();
 //    while (true) {
