@@ -11,6 +11,7 @@
 #include "questionbank.h"
 #include "user.h"
 #include "userbank.h"
+#include "gameresult.h"
 
 namespace Ui {
 class Server;
@@ -49,11 +50,16 @@ private:
     QTcpServer* server;
     QTcpSocket* socket1;
     QTcpSocket* socket2;
-    quint16 client_num;
-    quint16 client1;
-    quint16 client2;
+    quint16 client_num;//标志连接的客户端的数量
+    quint16 client1;//标志client1是否加入游戏
+    quint16 client2;//标志client2是否加入游戏
+    quint16 client1_ready;//标志client1准备加入匹配游戏
+    quint16 client2_ready;//标志client2准备加入匹配游戏
+    QString client1_name;
+    QString client2_name;
     QuestionBank* questionbank;
     UserBank* userbank;
+    GameResult* gameresult;
     const quint16 max_num = 1242;
     const quint16 per_num = 10;
 };

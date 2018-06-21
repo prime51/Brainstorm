@@ -4,35 +4,31 @@
 #include <QWidget>
 #include <QList>
 #include <QString>
+#include <QPaintEvent>
+#include <QTimerEvent>
 
-#include "questionClass/questionbank.h"
+#include "questionbank.h"
 
 namespace Ui {
-class GamePage;
+class Widget;
 }
 
-class GamePage : public QWidget
+class Widget : public QWidget
 {
     Q_OBJECT
 
 public:
-    explicit GamePage(QWidget *parent = 0);
-    ~GamePage();
+    explicit Widget(QWidget *parent = 0);
+    ~Widget();
 
     void timerEvent(QTimerEvent *event);
     void paintEvent(QPaintEvent *event);
 
-signals:
-    void gameEnds();
-
 public slots:
     void on_click_next();
 
-protected:
-    void closeEvent(QCloseEvent *event);
-
 private:
-    Ui::GamePage *ui;
+    Ui::Widget *ui;
 
     qint32 score;                  // 当前得分
     qint32 curQ;                   // 当前第几题

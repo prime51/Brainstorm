@@ -18,15 +18,15 @@ SOURCES += main.cpp\
         question.cpp\
         questionbank.cpp\
         user.cpp\
-        userbank.cpp
-#        gameresult.cpp
+        userbank.cpp\
+        gameresult.cpp
 
 HEADERS  += server.h\
         question.h\
         questionbank.h\
         user.h\
-        userbank.h
-#        gameresult.h
+        userbank.h\
+        gameresult.h
 
 FORMS    += server.ui
 

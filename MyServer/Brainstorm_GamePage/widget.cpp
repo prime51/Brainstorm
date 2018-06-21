@@ -1,5 +1,5 @@
-#include "gamepage.h"
-#include "ui_gamepage.h"
+#include "widget.h"
+#include "ui_widget.h"
 
 #include <QPainter>
 #include <QMessageBox>
@@ -7,11 +7,10 @@
 #include <QDebug>
 #include <QtGlobal>
 
-GamePage::GamePage(QWidget *parent) :
+Widget::Widget(QWidget *parent) :
     QWidget(parent),
-    ui(new Ui::GamePage)
+    ui(new Ui::Widget)
 {
-    setAttribute(Qt::WA_DeleteOnClose);
     ui->setupUi(this);
 
     setQueTotal(5);
@@ -25,21 +24,10 @@ GamePage::GamePage(QWidget *parent) :
     ui->remainTime->display(10);    // 初始时间
     timeID = startTimer(1000);      // 间隔1s
 
-    ui->radioButton_A->adjustSize();
-    ui->radioButton_B->adjustSize();
-    ui->radioButton_C->adjustSize();
-    ui->radioButton_D->adjustSize();
-    ui->description->adjustSize();
-    ui->description->setScaledContents(true);
-    ui->description->setGeometry(QRect(328, 240, 329, 27*4));  //四倍行距
-    ui->description->setWordWrap(true);
-    ui->description->setAlignment(Qt::AlignTop);
-
-    // go to the next question when nextBtn is clicked
     connect(ui->nextQue, &QPushButton::clicked, this, &on_click_next);
 }
 
-GamePage::~GamePage()
+Widget::~Widget()
 {
     delete ui;
 
@@ -49,7 +37,7 @@ GamePage::~GamePage()
     }
 }
 
-void GamePage::setQueTotal(qint32 n)
+void Widget::setQueTotal(qint32 n)
 {
     queTotal = n;
 }
@@ -83,7 +71,7 @@ QList<qint32> generateUniqueRandNumbers(qint32 MAXNUM, qint32 queNum) {
     return numbersList;
 }
 
-void GamePage::prepareQuestions()
+void Widget::prepareQuestions()
 {
     QList<qint32> queID = generateUniqueRandNumbers(db.GetQueNum(), queTotal);
     for (int i = 0; i < queID.size(); i++)
@@ -93,7 +81,7 @@ void GamePage::prepareQuestions()
         qDebug() << queID[i];
 }
 
-void GamePage::nextQuestion()
+void Widget::nextQuestion()
 {
     curQ++;
     if (curQ == queTotal) {
@@ -116,7 +104,7 @@ void GamePage::nextQuestion()
     }
 }
 
-void GamePage::showQuestion() const
+void Widget::showQuestion() const
 {
     const Question *que = listQue[curQ];
     QString id = que->GetID();
@@ -126,36 +114,21 @@ void GamePage::showQuestion() const
     QString opC = que->GetOption(C);
     QString opD = que->GetOption(D);
 
-    qDebug() << id << " " << descrip << " " << opA << " " << opB << " "
-             << opC << " " << opD;
-
     ui->description->setText(descrip);
     if (opA == "blank") ui->radioButton_A->hide();
-    else {
-        ui->radioButton_A->setText(opA);
-        ui->radioButton_A->show();
-    }
+    else ui->radioButton_A->setText(opA);
 
     if (opB == "blank") ui->radioButton_B->hide();
-    else {
-        ui->radioButton_B->setText(opB);
-        ui->radioButton_B->show();
-    }
+    else ui->radioButton_B->setText(opB);
 
     if (opC == "blank") ui->radioButton_C->hide();
-    else {
-        ui->radioButton_C->setText(opC);
-        ui->radioButton_C->show();
-    }
+    else ui->radioButton_C->setText(opC);
 
     if (opD == "blank") ui->radioButton_D->hide();
-    else {
-        ui->radioButton_D->setText(opD);
-        ui->radioButton_D->show();
-    }
+    else ui->radioButton_D->setText(opD);
 }
 
-void GamePage::checkAnswer()
+void Widget::checkAnswer()
 {
     QString choice;
     if (ui->radioButton_A->isChecked())
@@ -174,13 +147,13 @@ void GamePage::checkAnswer()
     return ;
 }
 
-void GamePage::on_click_next()
+void Widget::on_click_next()
 {
     checkAnswer();
     nextQuestion();
 }
 
-void GamePage::timerEvent(QTimerEvent *event)
+void Widget::timerEvent(QTimerEvent *event)
 {
     ui->remainTime->display(ui->remainTime->value() - 1);
     if (ui->remainTime->value() == 0) {
@@ -189,17 +162,11 @@ void GamePage::timerEvent(QTimerEvent *event)
     }
 }
 
-void GamePage::paintEvent(QPaintEvent *event)
+void Widget::paintEvent(QPaintEvent *event)
 {
 
     // 画家
     QPainter p(this);  // 画家  this 是指以当前窗口为图纸 画图
 
-    p.drawPixmap(0, 0, this->width(), this->height(), QPixmap(":/resources/images/background"));
-}
-
-void GamePage::closeEvent(QCloseEvent *event)
-{
-    emit gameEnds();
-    event->accept();
+    p.drawPixmap(0, 0, this->width(), this->height(), QPixmap(":/images/background"));
 }

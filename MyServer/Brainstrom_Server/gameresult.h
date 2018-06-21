@@ -3,6 +3,7 @@
 #include <QString>
 #include <QList>
 #include <QDir>
+#include <QTextStream>
 
 class GameResult
 {
@@ -13,7 +14,7 @@ public:
     void add_q_id(QString q);
     void add_response(QString r);
     void set_time(QString t);
-    void write_result();
+    void write_result(QString t);
     QString read_result();
 
     QString name;
