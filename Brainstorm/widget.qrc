@@ -1,0 +1,11 @@
+<RCC>
+    <qresource prefix="/resources/database">
+        <file alias="data">resources/database/QuestionBank.csv</file>
+    </qresource>
+    <qresource prefix="/resources/images">
+        <file alias="background">resources/images/089.JPG</file>
+        <file alias="close">resources/images/close.ico</file>
+        <file alias="mininum">resources/images/minimum.ico</file>
+        <file alias="icon">resources/images/up.ico</file>
+    </qresource>
+</RCC>
