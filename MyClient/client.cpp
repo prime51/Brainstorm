@@ -15,7 +15,7 @@ Client::Client(QWidget *parent) :
 
     ui->pushButton_Send->setEnabled(false);
     ui->lineEdit_IP->setText("127.0.0.1");
-    ui->lineEdit_Port->setText("8765");
+    ui->lineEdit_Port->setText("6666");
 }
 
 Client::~Client()
@@ -42,7 +42,7 @@ void Client::on_pushButton_Connect_clicked()
         socket->connectToHost(IP, port);
 
         //等待连接成功
-        if(!socket->waitForConnected(30000))
+        if(!socket->waitForConnected(3000))
         {
             qDebug() << "Connection failed!";
             return;
@@ -80,14 +80,6 @@ void Client::socket_Read_Data()
     buffer = socket->readAll();
     ui->textEdit_Recv->setText("");
     ui->textEdit_Recv->append(QString::fromLocal8Bit(buffer));//在文本框中追加
-//    if(!buffer.isEmpty())
-//    {
-//        QString str = ui->textEdit_Recv->toPlainText();
-//        //str+=tr(buffer);
-//        str = tr(fromLocal8Bit(buffer));
-//        //刷新显示
-//        ui->textEdit_Recv->setText(str);
-//    }
 }
 
 void Client::socket_Disconnected()
